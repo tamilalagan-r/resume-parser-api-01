@@ -1,0 +1,20 @@
+Flask
+gunicorn
+
+# Google Gemini AI
+google-generativeai
+
+# File processing (PDF, DOCX, Images)
+pdfplumber
+python-docx
+Pillow
+opencv-python-headless
+
+# OCR for extracting text from images
+pytesseract
+
+# Data handling
+pandas
+
+# Optional useful libraries (Safe to keep)
+Werkzeug
