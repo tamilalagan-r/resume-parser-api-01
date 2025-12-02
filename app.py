@@ -1,20 +1,27 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, render_template_string
 
 app = Flask(__name__)
 
-@app.route("/")
-def index():
-    return "API is Live"
+HTML_FORM = """
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Upload File</h2>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>
+"""
 
-@app.route("/parse-resume", methods=["POST"])
-def parse_resume():
-    uploaded_file = request.files.get("file")
+@app.route('/')
+def home():
+    return HTML_FORM
 
-    if not uploaded_file:
-        return jsonify({"error": "No file sent"}), 400
-
-    # Process file here...
-    return jsonify({"status": "success", "filename": uploaded_file.filename})
-
-if __name__ == "__main__":
-    app.run()
+@app.route('/upload', methods=['POST'])
+def upload():
+    file = request.files['file']
+    return f"File '{file.filename}' uploaded successfully!"
+    
+app.run(debug=True)
