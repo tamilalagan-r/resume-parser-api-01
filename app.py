@@ -10,5 +10,9 @@ def home():
 def parse_resume():
     return {"status": "resume parsing working"}
 
+@app.route("/parse-resume", methods=["POST"])
+def parse_resume():
+    return {"status": "resume parsing working"}
+
 if __name__ == "__main__":
     app.run(debug=True)
